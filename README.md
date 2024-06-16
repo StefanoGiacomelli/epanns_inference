@@ -1,11 +1,11 @@
-# PANNs AT (Audio Tagging) inference
+# E-PANNs AT (Audio Tagging) inference
 
 **epanns_inference** provides an easy to use Python interface to audio tagging models from E-PANNS: Sound Recognition using Efficient Pre-Trained Audio Neural Networks: https://github.com/Arshdeep-Singh-Boparai/E-PANNs
 
 ## Installation
 PyTorch>=1.0 is required.
 ```
-$ pip install epanns_inference
+$ pip install epanns-inference
 ```
 
 ## Usage
