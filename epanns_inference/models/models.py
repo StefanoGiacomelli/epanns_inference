@@ -187,7 +187,7 @@ class Cnn14_pruned(nn.Module):
         self.fc_audioset = nn.Linear(2048, classes_num, bias=True)
 
         if pre_trained:
-            os.system('wget -O "{}" "{}"'.format('./', CKPT_PATH))
+            os.system('wget -O "{}" "{}"'.format('./checkpoint_closeto_.44.pt', CKPT_PATH))
             checkpoint = torch.load('./checkpoint_closeto_.44.pt', map_location=lambda storage, loc: storage)
             self.load_state_dict(checkpoint)
         else:
@@ -235,8 +235,9 @@ class Cnn14_pruned(nn.Module):
         x = x1 + x2
         x = F.dropout(x, p=0.5, training=self.training)
         x = F.relu_(self.fc1(x))
-        
-        embedding = F.dropout(x, p=0.5, training=self.training)
+        embedding = x.clone()
+
+        x = F.dropout(x, p=0.5, training=self.training)
         clipwise_output = nn.functional.softmax(self.fc_audioset(x))
 
         output_dict = {'clipwise_output': clipwise_output, 'embedding': embedding}

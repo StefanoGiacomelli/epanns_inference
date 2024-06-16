@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="epanns_inference",
-    version="0.0.2",
+    version="0.1.1",
     author="Arshdeep-Singh-Boparai, Stefano Giacomelli (Ph.D. student UnivAQ)",
     author_email="arshdeep.singh@surrey.ac.uk, stefano.giacomelli@graduate.univaq.it",
     description="epanns_inference: EPANNs audio tagging inference api",
