@@ -10,7 +10,7 @@ from torchlibrosa.stft import Spectrogram, LogmelFilterBank
 from torchlibrosa.augmentation import SpecAugmentation
 from .utils import do_mixup
 
-CKPT_PATH: str = os.path.join("models", "checkpoint_closeto_.44.pt")
+CKPT_PATH = 'https://github.com/StefanoGiacomelli/epanns_inference/raw/main/epanns_inference/models/checkpoint_closeto_.44.pt'
 
 
 def init_layer(layer):
@@ -187,7 +187,8 @@ class Cnn14_pruned(nn.Module):
         self.fc_audioset = nn.Linear(2048, classes_num, bias=True)
 
         if pre_trained:
-            checkpoint = torch.load(CKPT_PATH, map_location=lambda storage, loc: storage)
+            os.system('wget -O "{}" "{}"'.format('./', CKPT_PATH))
+            checkpoint = torch.load('./checkpoint_closeto_.44.pt', map_location=lambda storage, loc: storage)
             self.load_state_dict(checkpoint)
         else:
             self.init_weight()
